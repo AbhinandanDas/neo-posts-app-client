@@ -1,14 +1,12 @@
-import React,{useContext} from "react";
+import React from "react";
 import {Formik,Form,Field,ErrorMessage} from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import { useEffect } from "react";
-import { AuthContext } from "../helpers/AuthContext";
 
 function CreatePost() {
     let navigate = useNavigate();
-    const {authState} = useContext(AuthContext);
 
     const initialValues = {
         title:"",
@@ -19,7 +17,7 @@ function CreatePost() {
         if(!localStorage.getItem("accessToken")) {
             navigate("/login")
         }   
-    },[])
+    })
 
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/posts",data, {
