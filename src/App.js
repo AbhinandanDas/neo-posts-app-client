@@ -36,7 +36,7 @@ function App() {
         }) // if user is logged in
       }
     })
-  },[])
+  })
 
   const logout = () => {
     localStorage.removeItem("accessToken")
