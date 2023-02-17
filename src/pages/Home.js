@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "axios";
-import {useEffect,useState,useContext} from "react";
+import {useEffect,useState} from "react";
 import {Link,useNavigate} from "react-router-dom"
-import { AuthContext } from "../helpers/AuthContext";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 function Home() {
     const [listOfPosts,setListofPosts] = useState([]);
     const [likedPosts, setLikedPosts] = useState([]);
-    const { authState } = useContext(AuthContext)
 
     let navigate = useNavigate();
 
@@ -28,7 +26,7 @@ function Home() {
           }))
         });
     } 
-    },[]);
+    });
 
     const likePost = (postId) => {
       axios.post("http://localhost:3001/like", {postId : postId}, {
